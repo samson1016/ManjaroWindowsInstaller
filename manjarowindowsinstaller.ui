@@ -40,7 +40,7 @@
      <enum>QTabWidget::South</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Welcome">
      <attribute name="title">
@@ -206,6 +206,19 @@
       </property>
       <property name="text">
        <string>Password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Min. 4GB is required.</string>
       </property>
      </widget>
     </widget>

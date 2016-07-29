@@ -13,7 +13,8 @@ ManjaroWindowsInstaller::~ManjaroWindowsInstaller()
     delete ui;
 }
 
-void ManjaroWindowsInstaller::on_pushButton_clicked()
+
+void ManjaroWindowsInstaller::on_pushButton_clicked(bool checked)
 {
 
 }

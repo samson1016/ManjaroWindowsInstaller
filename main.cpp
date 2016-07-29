@@ -3,9 +3,9 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    ManjaroWindowsInstaller w;
-    w.show();
+    QApplication app(argc, argv);
+    ManjaroWindowsInstaller window;
+    window.show();
 
-    return a.exec();
+    return app.exec();
 }
