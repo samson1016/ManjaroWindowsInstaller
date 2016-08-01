@@ -2,6 +2,7 @@
 #include "ui_manjarowindowsinstaller.h"
 #include "iostream"
 #include "fstream"
+#include "qstring.h"
 
 ManjaroWindowsInstaller::ManjaroWindowsInstaller(QWidget *parent) :
     QMainWindow(parent),
@@ -15,39 +16,36 @@ ManjaroWindowsInstaller::~ManjaroWindowsInstaller()
     delete ui;
 }
 
-void ManjaroWindowsInstaller::on_pushButton_clicked(bool checked)
+void ManjaroWindowsInstaller::on_pushButton_clicked()
 {
-    if (checked==true)
+    switch(ui->tabWidget->currentIndex())
     {
-        switch(ui->tabWidget->currentIndex())
-        {
-            case 0:
-                ui->tabWidget->setCurrentIndex(1);
-                break;
-            case 1:
-                ui->tabWidget->setCurrentIndex(2);
-                proceedInstallation();
-                ui->tabWidget->setCurrentIndex(3);
-                break;
-            case 2:
-                break;
-            case 3:
-                system("shutdown -r -t 0");
-                break;
-            default:
-                break;
-        }
+        case 0:
+            ui->tabWidget->setCurrentIndex(1);
+            break;
+        case 1:
+            ui->tabWidget->setCurrentIndex(2);
+            proceedInstallation();
+            ui->tabWidget->setCurrentIndex(3);
+            break;
+        case 2:
+            break;
+        case 3:
+            system("shutdown -r -t 0");
+            break;
+        default:
+            break;
     }
 }
 void ManjaroWindowsInstaller::proceedInstallation()
 {
     //Export config
         //Q-styled string
-        Qstring Qlanguage = ui->comboBox->currentText();
-        Qstring Qdrive = ui->comboBox_2->currentText();
-        Qstring QinstallationSize = ui->plainTextEdit_3->plainText();
-        Qstring Qusername = ui->plainTextEdit->plainText();
-        Qstring Qpassword = ui->plainTextEdit_2->plainText();
+        QString Qlanguage = ui->comboBox->currentText();
+        QString Qdrive = ui->comboBox_2->currentText();
+        QString QinstallationSize = ui->plainTextEdit_3->toPlainText();
+        QString Qusername = ui->plainTextEdit->toPlainText();
+        QString Qpassword = ui->plainTextEdit_2->toPlainText();
         //Convert to standard string
         std::string language = Qlanguage.toUtf8().constData();
         std::string drive = Qdrive.toUtf8().constData();
