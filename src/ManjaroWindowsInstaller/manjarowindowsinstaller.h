@@ -18,12 +18,11 @@ public:
 private slots:
 
     void on_pushButton_clicked(bool checked);
-
+    void proceedInstallation();
 
 
 private:
     Ui::ManjaroWindowsInstaller *ui;
 };
-void proceedInstallation();
 
 #endif // MANJAROWINDOWSINSTALLER_H

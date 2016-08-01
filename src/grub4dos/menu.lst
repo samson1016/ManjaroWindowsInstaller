@@ -18,6 +18,14 @@ default /default
 ## Menu AutoNumber
 write 0x8274 0x2001
 
+title Manjaro_Live (0xFF)
+  find --set-root /fdfullcd.iso
+  map /manjaro.iso (0xFF)
+  map --hook
+  root (0xFF)
+  kernel /manjaro/boot/x86_64/manjaro
+  initrd /manjaro/boot/x86_64/manjaro.img
+
 title find and load NTLDR of Windows NT/2K/XP\n find and load NTLDR of Windows NT/2K/XP
 fallback +1
 find --set-root --ignore-floppies --ignore-cd /ntldr

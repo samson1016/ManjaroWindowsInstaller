@@ -98,7 +98,7 @@
        <rect>
         <x>150</x>
         <y>40</y>
-        <width>111</width>
+        <width>161</width>
         <height>22</height>
        </rect>
       </property>
@@ -177,16 +177,6 @@
        <string>Installation Size</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_3">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>120</y>
-        <width>79</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="geometry">
        <rect>
@@ -233,17 +223,14 @@
        <string>Password</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_14">
+     <widget class="QPlainTextEdit" name="plainTextEdit_3">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>150</x>
         <y>120</y>
-        <width>121</width>
-        <height>21</height>
+        <width>81</width>
+        <height>31</height>
        </rect>
-      </property>
-      <property name="text">
-       <string>Min. 4GB is required.</string>
       </property>
      </widget>
     </widget>
