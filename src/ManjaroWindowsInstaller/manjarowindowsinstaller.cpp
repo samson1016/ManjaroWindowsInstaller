@@ -17,7 +17,7 @@ void ManjaroWindowsInstaller::on_pushButton_clicked(bool checked)
 {
     if (checked==true)
     {
-        switch(ui->tabWidget->currentIndex())  //Don't know how to call the currentIndex()-a property of the QTabWidget.
+        switch(ui->tabWidget->currentIndex())
         {
             case 0:
                 ui->tabWidget->setCurrentIndex(1);

@@ -16,7 +16,6 @@ public:
     ~ManjaroWindowsInstaller();
 
 private slots:
-    void on_pushButton_clicked();
 
     void on_pushButton_clicked(bool checked);
 
