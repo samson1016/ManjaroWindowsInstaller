@@ -40,7 +40,7 @@
      <enum>QTabWidget::South</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Welcome">
      <attribute name="title">
@@ -114,7 +114,7 @@
       </item>
       <item>
        <property name="text">
-        <string>German</string>
+        <string>English(UK)</string>
        </property>
       </item>
       <item>
@@ -124,7 +124,12 @@
       </item>
       <item>
        <property name="text">
-        <string>English(UK)</string>
+        <string>German</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Japanese</string>
        </property>
       </item>
      </widget>
@@ -233,6 +238,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>130</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>(Measured in GB)</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Installation">
      <attribute name="title">
@@ -248,7 +266,7 @@
        </rect>
       </property>
       <property name="value">
-       <number>24</number>
+       <number>0</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_9">
