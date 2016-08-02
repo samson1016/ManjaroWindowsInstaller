@@ -70,15 +70,15 @@ void ManjaroWindowsInstaller::proceedInstallation()
         system("copy manjaro.config %SYSTEMDRIVE%\\manjaro\\manjaro.config");
         ui->progressBar->setValue(50);
 
-    //Make Manjaro ISO bootable.
+    //Make Manjaro ISO bootable by Windows's boot loader.
         //copy grub4dos folder and manjaro ISO to C:\manjaro
         system("move manjaro.iso %SYSTEMDRIVE%\\manjaro\\manjaro.iso");
         system("xcopy grub4dos %SYSTEMDRIVE%\\grub4dos /s /e");
         ui->progressBar->setValue(75);
 
-        //edit boot.ini to boot grldr file (TBD) add C:\manjaro\grub4dos\grldr="Manjaro Linux"
+        //edit boot.ini to boot grldr file: add C:\manjaro\grub4dos\grldr="Manjaro Linux"
         std::ofstream changeBootINI("%SYSTEMDRIVE%\\boot.ini", std::ios_base::app | std::ios_base::out);
         changeBootINI << "\n" << "%SYSTEMDRIVE%\\manjaro\\grub4dos\\grldr=\"ManjaroLinux\""<< std::endl;
         changeBootINI.close();
-
+        ui->progressBar->setValue(100);
 }
