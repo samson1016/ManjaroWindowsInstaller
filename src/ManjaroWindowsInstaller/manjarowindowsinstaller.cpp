@@ -3,7 +3,6 @@
 #include "iostream"
 #include "fstream"
 #include "qstring.h"
-#include "windows.h"
 
 ManjaroWindowsInstaller::ManjaroWindowsInstaller(QWidget *parent) :
     QMainWindow(parent),
@@ -58,10 +57,11 @@ void ManjaroWindowsInstaller::proceedInstallation()
         std::string password = Qpassword.toUtf8().constData();
         ui->progressBar->setValue(40);
 
+        //Write configurations into file.
         std::ofstream configFile;
         configFile.open("manjaro.config");
         configFile << language << std::endl;
-        configFile << drive << std::endl;      //it need to be converted to UUID or something like that plus a partition number.
+        configFile << drive << std::endl;
         configFile << installationSize << std::endl;
         configFile << username << std::endl;
         configFile << password << std::endl;
@@ -69,6 +69,11 @@ void ManjaroWindowsInstaller::proceedInstallation()
         system("mkdir %SYSTEMDRIVE%\\manjaro");
         system("copy manjaro.config %SYSTEMDRIVE%\\manjaro\\manjaro.config");
         ui->progressBar->setValue(50);
+
+        //Implant the installation flag.(To identify the target partition)
+        configFile.open(drive + ":\\flag");
+        configFile << "This is Manjaro Linux's installation flag." << std::endl;
+        configFile.close();
 
     //Make Manjaro ISO bootable by Windows's boot loader.
         //copy grub4dos folder and manjaro ISO to C:\manjaro
