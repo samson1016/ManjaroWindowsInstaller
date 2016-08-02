@@ -19,6 +19,7 @@ private slots:
 
     void on_pushButton_clicked();
     void proceedInstallation();
+    void getDriveList();
 
 private:
     Ui::ManjaroWindowsInstaller *ui;

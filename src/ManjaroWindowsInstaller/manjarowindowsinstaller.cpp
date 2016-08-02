@@ -3,6 +3,9 @@
 #include "iostream"
 #include "fstream"
 #include "qstring.h"
+#include "qstringlist.h"
+#include "qdir.h"
+#include "qlist.h"
 
 ManjaroWindowsInstaller::ManjaroWindowsInstaller(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +25,7 @@ void ManjaroWindowsInstaller::on_pushButton_clicked()
     {
         case 0:
             ui->tabWidget->setCurrentIndex(1);
+            getDriveList();
             break;
         case 1:
             ui->tabWidget->setCurrentIndex(2);
@@ -91,4 +95,16 @@ void ManjaroWindowsInstaller::proceedInstallation()
         changeBootINI << "\n" << "%SYSTEMDRIVE%\\manjaro\\grub4dos\\grldr=\"ManjaroLinux\""<< std::endl;
         changeBootINI.close();
         ui->progressBar->setValue(100);
+}
+
+
+void ManjaroWindowsInstaller::getDriveList()
+{
+    QDir my_Dir;
+    QList<QFileInfo> m_Drives = my_Dir.drives();
+    QStringList driveList;
+    foreach( QFileInfo item, m_Drives )
+        driveList << item.path();
+
+    ui->comboBox_2->addItems(driveList);
 }
