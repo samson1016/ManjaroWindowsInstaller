@@ -2,10 +2,10 @@
 #include "ui_manjarowindowsinstaller.h"
 #include "iostream"
 #include "fstream"
-#include "qstring.h"
-#include "qstringlist.h"
-#include "qdir.h"
-#include "qlist.h"
+#include "QString"
+#include "QStringList"
+#include "QDir"
+#include "QList"
 
 ManjaroWindowsInstaller::ManjaroWindowsInstaller(QWidget *parent) :
     QMainWindow(parent),
@@ -44,8 +44,13 @@ void ManjaroWindowsInstaller::on_pushButton_clicked()
 void ManjaroWindowsInstaller::proceedInstallation()
 {
     //Export config
-        ui->label_15->setText("Exporting your configurations..");
+        ui->label_15->setText(tr("Exporting your configurations.."));
         ui->progressBar->setValue(0);
+
+        //get system country
+        QLocale systemLocale;
+        int country = systemLocale.country();
+
         //Q-styled string
         QString Qlanguage = ui->comboBox->currentText();
         QString Qdrive = ui->comboBox_2->currentText();
@@ -65,6 +70,7 @@ void ManjaroWindowsInstaller::proceedInstallation()
         //Write configurations into file.
         std::ofstream configFile;
         configFile.open("manjaro.config");
+        configFile << country << std::endl;
         configFile << language << std::endl;
         configFile << drive << std::endl;
         configFile << installationSize << std::endl;
@@ -76,7 +82,7 @@ void ManjaroWindowsInstaller::proceedInstallation()
         ui->progressBar->setValue(50);
 
         //Implant the installation flag.(To identify the target partition)
-        ui->label_15->setText("Creating the installation flag......");
+        ui->label_15->setText(tr("Creating the installation flag......"));
         configFile.open(drive + ":\\flag");
         configFile << "This is the Manjaro Linux's installation flag." << std::endl;
         configFile.close();
@@ -84,13 +90,13 @@ void ManjaroWindowsInstaller::proceedInstallation()
 
     //Make Manjaro ISO bootable by Windows's boot loader.
         //copy grub4dos folder and manjaro ISO to C:\manjaro
-        ui->label_15->setText("Installing grub4dos..");
+        ui->label_15->setText(tr("Installing grub4dos.."));
         system("move manjaro.iso %SYSTEMDRIVE%\\manjaro\\manjaro.iso");
         system("xcopy grub4dos %SYSTEMDRIVE%\\grub4dos /s /e");
         ui->progressBar->setValue(75);
 
         //edit boot.ini to boot grldr file: add C:\manjaro\grub4dos\grldr="Manjaro Linux"
-        ui->label_15->setText("Editing boot.ini options..");
+        ui->label_15->setText(tr("Editing boot.ini options.."));
         std::ofstream changeBootINI("%SYSTEMDRIVE%\\boot.ini", std::ios_base::app | std::ios_base::out);
         changeBootINI << "\n" << "%SYSTEMDRIVE%\\manjaro\\grub4dos\\grldr=\"ManjaroLinux\""<< std::endl;
         changeBootINI.close();
